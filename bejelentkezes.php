@@ -14,7 +14,7 @@ if(filter_input(INPUT_POST, "belepes", FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_F
         $result = $conn->query('SELECT * FROM `user` WHERE `loginname`= "'.$loginname.'";');
         $_SESSION['user'] = $result->fetch_assoc();
         $_SESSION['login'] = true;
-        
+        header("Location: index.php?menu=home");
     } else {
         echo 'Belépés sikertelen!';    
     }

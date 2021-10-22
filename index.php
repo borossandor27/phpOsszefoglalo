@@ -4,6 +4,12 @@ require_once './connect.php';
 session_start();
 $menu = filter_input(INPUT_GET, "menu", FILTER_SANITIZE_STRING);
 $login = isset($_SESSION["login"])?$_SESSION["login"]:false;
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 30 * 60)) {
+    // last request was more than 30 minutes ago
+    session_unset();     // unset $_SESSION variable for the run-time 
+    session_destroy();   // destroy session data in storage
+}
+$_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 ?>
 <!DOCTYPE html>
 <html lang="hu">

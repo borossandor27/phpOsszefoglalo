@@ -12,6 +12,7 @@ if(filter_input(INPUT_POST, "regisztral", FILTER_VALIDATE_BOOLEAN, FILTER_NULL_O
     $stmt->bind_param("ssssss", $loginname, $vnev, $phone, $email, $password , $cim);
     if($stmt->execute()){
         echo 'Sikeres regisztráció!';
+        header("Location: index.php?menu=home");
     } else {
         echo 'Rögzítés sikertelen';
     }

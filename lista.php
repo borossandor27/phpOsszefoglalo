@@ -11,7 +11,7 @@ if($result = $conn->query($sql)){
             }
             echo '<div class="card-body">
                     <h5 class="card-title">'.$row["nev"].'</h5>
-                <p class="card-text">'.$row["ar"].'</p>
+                <p class="card-text">'.number_format($row["ar"],0,"."," ").' Ft</p>
                 <button type="submit" class="btn btn-primary" value="'.$row["tazon"].'">Megrendelem</button>
               </div>
             </div>';
